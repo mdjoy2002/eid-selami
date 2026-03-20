@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>🌙 প্রিমিয়াম ঈদ সেলামি উৎসব | জয় 🌟</title>
+    <style>
+        :root {
+            --gold: #ffde7d;
+            --royal-green: #002e1f;
+            --deep-emerald: #003d29;
+            --white: #ffffff;
+        }
+
+        body {
+            background-color: #000a08;
+            background-image: 
+                linear-gradient(rgba(0, 46, 31, 0.85), rgba(0, 10, 8, 0.95)),
+                url('https://www.transparenttextures.com/patterns/islamic-art.png');
+            color: white;
+            font-family: 'Segoe UI', Roboto, 'Hind Siliguri', sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            height: 100vh; 
+            margin: 0;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .moon {
+            position: fixed;
+            top: 40px;
+            right: 60px;
+            width: 120px;
+            height: 120px;
+            background: radial-gradient(circle, #fffbe6 0%, #ffde7d 60%, transparent 100%);
+            border-radius: 50%;
+            box-shadow: 0 0 60px rgba(255, 222, 125, 0.5);
+            z-index: 1;
+        }
+
+        .mosque-bg {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            height: 350px;
+            background: url('https://img.freepik.com/free-vector/silhouette-mosque-background_23-2148496464.jpg') no-repeat bottom center;
+            background-size: cover;
+            opacity: 0.15;
+            z-index: 0;
+            pointer-events: none;
+            filter: grayscale(100%) invert(1);
+        }
+
+        .lanterns {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 2;
+            pointer-events: none;
+        }
+        
+        .lanterns::before, .lanterns::after {
+            content: "🏮";
+            position: absolute;
+            font-size: 40px;
+            filter: drop-shadow(0 0 10px gold);
+            animation: swing 3s infinite ease-in-out;
+        }
+
+        .lanterns::before { top: 10px; left: 15%; }
+        .lanterns::after { top: 30px; left: 80%; animation-delay: -1.5s; font-size: 35px;}
+
+        @keyframes swing {
+            0%, 100% { transform: rotate(-10deg); }
+            50% { transform: rotate(10deg); }
+        }
+
+        .hug-icon {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            font-size: 80px;
+            opacity: 0.1;
+            z-index: 1;
+            transform: rotate(-15deg);
+        }
+
+        .profile-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 20px;
+            z-index: 10;
+            position: relative;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 10px 20px;
+            border-radius: 50px;
+            border: 1px solid rgba(255, 222, 125, 0.2);
+        }
+
+        .profile-img {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            border: 2px solid var(--gold);
+            box-shadow: 0 0 20px rgba(255, 222, 125, 0.3);
+            object-fit: cover;
+            animation: pulse 2.5s infinite;
+        }
+
+        .profile-text {
+            color: var(--gold);
+            font-size: 13px;
+            font-weight: bold;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+            line-height: 1.4;
+            text-align: left;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); filter: brightness(1); }
+            50% { transform: scale(1.05); filter: brightness(1.1); }
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
+            border: 1px solid rgba(255, 222, 125, 0.3);
+            border-radius: 30px;
+            padding: 40px 30px;
+            text-align: center;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.6);
+            z-index: 10;
+            max-width: 420px;
+            width: 90%; 
+            margin: auto; 
+            position: relative;
+        }
+
+        h1 {
+            font-size: calc(1.8em + 1vw); 
+            color: var(--gold);
+            text-shadow: 0 0 20px rgba(255, 222, 125, 0.4);
+            margin: 0 0 15px 0;
+            font-weight: 900;
+        }
+
+        p.subtitle {
+            font-size: 16px;
+            margin-bottom: 25px; 
+            opacity: 0.9; 
+            letter-spacing: 1px;
+        }
+
+        input {
+            padding: 16px 20px;
+            border-radius: 50px;
+            border: 2px solid var(--gold);
+            background: rgba(0, 0, 0, 0.6);
+            color: white;
+            font-size: 18px;
+            width: 100%; 
+            max-width: 320px; 
+            outline: none;
+            text-align: center;
+            margin-bottom: 25px;
+            transition: 0.3s;
+            box-sizing: border-box; 
+        }
+
+        input:focus { border-color: #fff; box-shadow: 0 0 15px var(--gold); }
+
+        #wheel-screen {
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 10;
+            animation: fadeIn 0.8s ease;
+            width: 100%;
+            height: 100%;
+        }
+
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+        .wheel-outer {
+            position: relative;
+            padding: 10px;
+            border-radius: 50%;
+            background: conic-gradient(from 0deg, #b8860b, #ffde7d, #b8860b);
+            box-shadow: 0 0 50px rgba(255, 222, 125, 0.3);
+            margin: 20px 0;
+            width: 80vw;
+            height: 80vw;
+            max-width: 480px;
+            max-height: 480px;
+        }
+
+        #wheel { width: 100%; height: 100%; border-radius: 50%; }
+
+        #pointer {
+            position: absolute;
+            top: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: calc(30px + 2vw); 
+            z-index: 100;
+            filter: drop-shadow(0 4px 10px rgba(0,0,0,0.5));
+        }
+
+        button {
+            padding: 15px 40px;
+            font-size: calc(16px + 0.5vw); 
+            font-weight: bold;
+            background: linear-gradient(135deg, #ccac00, #ffde7d, #ccac00);
+            color: #002e1f;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: 0.3s;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            text-transform: uppercase;
+        }
+
+        button:hover { transform: scale(1.05); }
+        button:disabled { opacity: 0.6; cursor: not-allowed; }
+
+        #result-box {
+            position: fixed;
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%) scale(0);
+            width: 85%;
+            max-width: 380px;
+            background: linear-gradient(145deg, #004d33, #002e1f);
+            border: 2px solid var(--gold);
+            border-radius: 30px;
+            padding: 30px 20px;
+            z-index: 3000;
+            text-align: center;
+            transition: 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 0 100px #000;
+        }
+
+        #result-box.active { transform: translate(-50%, -50%) scale(1); }
+
+        .creator {
+            position: fixed;
+            bottom: 10px;
+            color: var(--gold);
+            font-size: 11px;
+            letter-spacing: 3px;
+            z-index: 10;
+            font-weight: bold;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+            width: 100%;
+            text-align: center;
+        }
+
+        canvas#fireworks {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            pointer-events: none;
+            z-index: 2000;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="mosque-bg"></div>
+    <div class="moon"></div>
+    <div class="lanterns"></div>
+    <div class="hug-icon">🤝</div>
+    <canvas id="fireworks"></canvas>
+    
+    <div class="profile-container">
+        <img src="pic.jpg" alt="Joy" class="profile-img" onerror="this.src='https://via.placeholder.com/100?text=Joy'">
+        <div class="profile-text">
+            DESIGNED & DEVELOPED BY:<br>
+            মোঃ ইমতিয়াজ সরদার জয়
+        </div>
+    </div>
+
+    <div id="entry-screen" class="glass-card">
+        <h1>🌙 ঈদ সেলামি</h1>
+        <p class="subtitle">২০২৬ সালের আনন্দ উৎসব</p>
+        <input type="text" id="userName" placeholder="আপনার সুন্দর নাম লিখুন...">
+        <br>
+        <button onclick="showWheel()">ভিতরে প্রবেশ করুন ✨</button>
+    </div>
+
+    <div id="wheel-screen">
+        <h2 id="welcomeMsg" style="color: var(--gold); text-shadow: 0 0 10px rgba(255,222,125,0.4); margin-bottom: 10px; text-align: center; padding: 0 20px;"></h2>
+        <div class="wheel-outer">
+            <div id="pointer">📍</div>
+            <canvas id="wheel" width="500" height="500"></canvas>
+        </div>
+        <button id="spinBtn" onclick="spin()">ভাগ্য পরীক্ষা করুন 🎰</button>
+    </div>
+
+    <div id="result-box">
+        <h2 style="color: var(--gold); margin-top: 0; font-size: calc(22px + 1vw);">🌙 ঈদ মোবারক!</h2>
+        <p id="wishText" style="font-size: 16px; line-height: 1.6; color: #fff; padding: 0 10px;"></p>
+        <div style="margin: 15px auto; width: 40px; height: 2px; background: var(--gold); opacity: 0.5;"></div>
+        <p style="font-style: italic; color: var(--gold); margin-bottom: 20px; font-size: 14px;">ইতি: মোঃ ইমতিয়াজ সরদার জয়</p>
+        <button onclick="closeBox()" style="padding: 10px 30px; font-size: 16px;">ধন্যবাদ! ❤️</button>
+    </div>
+
+    <div class="creator">DESIGNED BY: MD IMTIAZ SARDER JOY</div>
+
+    <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-database-compat.js"></script>
+
+    <script>
+        // আপনার কনফিগারেশন
+        const firebaseConfig = {
+            apiKey: "AIzaSyDMctGVpoOB62APv8N3W7eNkGkUUif0P1o",
+            authDomain: "eid-selami-imtiaz-2026.firebaseapp.com",
+            databaseURL: "https://eid-selami-imtiaz-2026-default-rtdb.firebaseio.com",
+            projectId: "eid-selami-imtiaz-2026",
+            storageBucket: "eid-selami-imtiaz-2026.firebasestorage.app",
+            messagingSenderId: "867106965703",
+            appId: "1:867106965703:web:69c330e23052ac4d66d6e2"
+        };
+
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        const database = firebase.database();
+
+        const amounts = ["১০৳", "৫০০৳", "২০৳", "১০০০৳", "০৳", "১০০৳", "৫০৳", "২০০৳", "২৳", "৫০০০৳"];
+        const colors = ["#004d33", "#b8860b", "#004d33", "#b8860b", "#7b0000", "#004d33", "#b8860b", "#004d33", "#b8860b", "#d40000"];
+        
+        let startAngle = 0;
+        const arc = Math.PI / (amounts.length / 2);
+        const canvas = document.getElementById("wheel");
+        const ctx = canvas.getContext("2d");
+        const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+
+        function playCelebrationSound() {
+            const cheerOsc = audioCtx.createOscillator();
+            const cheerGain = audioCtx.createGain();
+            cheerOsc.type = 'sine';
+            cheerOsc.frequency.setValueAtTime(400, audioCtx.currentTime);
+            cheerOsc.frequency.exponentialRampToValueAtTime(800, audioCtx.currentTime + 1);
+            cheerGain.gain.setValueAtTime(0, audioCtx.currentTime);
+            cheerGain.gain.linearRampToValueAtTime(0.3, audioCtx.currentTime + 0.2);
+            cheerGain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 1.5);
+            cheerOsc.connect(cheerGain);
+            cheerGain.connect(audioCtx.destination);
+            cheerOsc.start();
+            cheerOsc.stop(audioCtx.currentTime + 1.5);
+
+            for(let j=0; j<12; j++) {
+                setTimeout(() => {
+                    const clapOsc = audioCtx.createOscillator();
+                    const clapGain = audioCtx.createGain();
+                    const filter = audioCtx.createBiquadFilter();
+                    clapOsc.type = 'triangle';
+                    clapOsc.frequency.setValueAtTime(150 + Math.random()*300, audioCtx.currentTime);
+                    filter.type = 'bandpass';
+                    filter.frequency.value = 1000;
+                    clapGain.gain.setValueAtTime(0.4, audioCtx.currentTime);
+                    clapGain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.1);
+                    clapOsc.connect(filter);
+                    filter.connect(clapGain);
+                    clapGain.connect(audioCtx.destination);
+                    clapOsc.start();
+                    clapOsc.stop(audioCtx.currentTime + 0.1);
+                }, j * 100 + Math.random()*50);
+            }
+        }
+
+        function drawWheel() {
+            ctx.clearRect(0, 0, 500, 500);
+            for (let i = 0; i < amounts.length; i++) {
+                const angle = startAngle + i * arc;
+                ctx.fillStyle = colors[i];
+                ctx.beginPath();
+                ctx.moveTo(250, 250);
+                ctx.arc(250, 250, 245, angle, angle + arc, false);
+                ctx.lineTo(250, 250);
+                ctx.fill();
+                ctx.strokeStyle = "rgba(255,222,125,0.2)";
+                ctx.stroke();
+                ctx.save();
+                ctx.fillStyle = "white";
+                ctx.font = 'bold 20px Arial';
+                ctx.translate(250 + Math.cos(angle + arc / 2) * 175, 250 + Math.sin(angle + arc / 2) * 175);
+                ctx.rotate(angle + arc / 2 + Math.PI / 2);
+                ctx.fillText(amounts[i], -ctx.measureText(amounts[i]).width / 2, 0);
+                ctx.restore();
+            }
+        }
+
+        function showWheel() {
+            const name = document.getElementById("userName").value;
+            if(!name) return alert("দয়া করে আপনার নাম লিখুন!");
+            document.getElementById("welcomeMsg").innerText = "ঈদ মোবারক, " + name + "!";
+            document.getElementById("entry-screen").style.display = "none";
+            document.getElementById("wheel-screen").style.display = "flex";
+            drawWheel();
+        }
+
+        function spin() {
+            if (audioCtx.state === 'suspended') audioCtx.resume();
+            const btn = document.getElementById("spinBtn");
+            btn.disabled = true;
+            let spinTimeTotal = Math.random() * 3000 + 5000;
+            let spinTime = 0;
+            let spinAngleStart = Math.random() * 10 + 25;
+
+            function rotate() {
+                spinTime += 20;
+                if (spinTime >= spinTimeTotal) {
+                    const degrees = startAngle * 180 / Math.PI + 90;
+                    const index = Math.floor((360 - degrees % 360) / (arc * 180 / Math.PI));
+                    const winAmount = amounts[index];
+                    
+                    const name = document.getElementById("userName").value;
+                    // ডাটাবেসে সেভ করা
+                    database.ref('users').push({
+                        name: name,
+                        amount: winAmount,
+                        time: new Date().toLocaleString('bn-BD')
+                    });
+
+                    showResultBox(winAmount);
+                    btn.disabled = false;
+                    return;
+                }
+                startAngle += (spinAngleStart - (spinTime/spinTimeTotal) * spinAngleStart) * Math.PI / 180;
+                drawWheel();
+                requestAnimationFrame(rotate);
+            }
+            rotate();
+        }
+
+        function showResultBox(win) {
+            const name = document.getElementById("userName").value;
+            const box = document.getElementById("result-box");
+            const text = document.getElementById("wishText");
+            
+            if(win === "০৳") {
+                text.innerHTML = `দুঃখিত <b>${name}</b>!<br>আপনার ভাগ্য আজ ভালো নয়। আপনি ০ টাকা পেয়েছেন। পরের বার চেষ্টা করুন! 😢`;
+            } else {
+                text.innerHTML = `অভিনন্দন <b>${name}</b>!<br>আপনি জিতেছেন <b>${win}</b> সেলামি।<br><br>এই টাকা দিয়ে চকলেট খেও🍫😋! আর সেই চকলেটের ভাগ আমাকেও দিও 😁`;
+                playCelebrationSound();
+                triggerFireworks();
+            }
+            box.classList.add("active");
+        }
+
+        function closeBox() {
+            document.getElementById("result-box").classList.remove("active");
+        }
+
+        function triggerFireworks() {
+            const fwCanvas = document.getElementById("fireworks");
+            const fwCtx = fwCanvas.getContext("2d");
+            fwCanvas.width = window.innerWidth;
+            fwCanvas.height = window.innerHeight;
+            let particles = [];
+            for(let i=0; i<200; i++) {
+                particles.push({
+                    x: fwCanvas.width/2, y: fwCanvas.height/3,
+                    vx: Math.random() * 10 - 5, vy: Math.random() * 10 - 5,
+                    c: `hsl(${Math.random()*360}, 100%, 60%)`, l: 1
+                });
+            }
+            function draw() {
+                fwCtx.clearRect(0,0, fwCanvas.width, fwCanvas.height);
+                particles.forEach((p, i) => {
+                    p.x += p.vx; p.y += p.vy; p.vy += 0.05; p.l -= 0.007;
+                    fwCtx.fillStyle = p.c; fwCtx.globalAlpha = p.l;
+                    fwCtx.beginPath(); fwCtx.arc(p.x, p.y, 3.5, 0, Math.PI*2); fwCtx.fill();
+                    if(p.l <= 0) particles.splice(i, 1);
+                });
+                if(particles.length > 0) requestAnimationFrame(draw);
+            }
+            draw();
+        }
+
+        window.addEventListener('resize', () => {
+            if(document.getElementById("wheel-screen").style.display === "flex") {
+                drawWheel();
+            }
+        });
+    </script>
+</body>
+</html>
