@@ -224,6 +224,7 @@
             color: #002e1f;
             border: none;
             border-radius: 50px;
+            border-radius: 50px;
             cursor: pointer;
             transition: 0.3s;
             box-shadow: 0 10px 30px rgba(0,0,0,0.3);
@@ -319,15 +320,16 @@
     <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-database-compat.js"></script>
 
     <script>
-        // আপনার কনফিগারেশন
+        // আপনার Firebase কনফিগারেশন
         const firebaseConfig = {
-            apiKey: "AIzaSyDMctGVpoOB62APv8N3W7eNkGkUUif0P1o",
-            authDomain: "eid-selami-imtiaz-2026.firebaseapp.com",
-            databaseURL: "https://eid-selami-imtiaz-2026-default-rtdb.firebaseio.com",
-            projectId: "eid-selami-imtiaz-2026",
-            storageBucket: "eid-selami-imtiaz-2026.firebasestorage.app",
-            messagingSenderId: "867106965703",
-            appId: "1:867106965703:web:69c330e23052ac4d66d6e2"
+            apiKey: "AIzaSyBt2FnLwwvoO_lLN6HGupigAv9ekxkN9ZA",
+            authDomain: "eid-selame-imtiaz-2026.firebaseapp.com",
+            databaseURL: "https://eid-selame-imtiaz-2026-default-rtdb.firebaseio.com",
+            projectId: "eid-selame-imtiaz-2026",
+            storageBucket: "eid-selame-imtiaz-2026.firebasestorage.app",
+            messagingSenderId: "955855576284",
+            appId: "1:955855576284:web:ea2266bef93559a5b16819",
+            measurementId: "G-ETZ5H3RRWC"
         };
 
         // Initialize Firebase
@@ -424,11 +426,16 @@
                     const winAmount = amounts[index];
                     
                     const name = document.getElementById("userName").value;
-                    // ডাটাবেসে সেভ করা
+                    
+                    // ফায়ারবেস ডাটাবেসে সেভ করা
                     database.ref('users').push({
                         name: name,
                         amount: winAmount,
                         time: new Date().toLocaleString('bn-BD')
+                    }).then(() => {
+                        console.log("Data saved to Firebase!");
+                    }).catch((error) => {
+                        console.error("Firebase Error:", error);
                     });
 
                     showResultBox(winAmount);
