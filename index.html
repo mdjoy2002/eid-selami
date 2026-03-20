@@ -224,7 +224,6 @@
             color: #002e1f;
             border: none;
             border-radius: 50px;
-            border-radius: 50px;
             cursor: pointer;
             transition: 0.3s;
             box-shadow: 0 10px 30px rgba(0,0,0,0.3);
@@ -320,7 +319,7 @@
     <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-database-compat.js"></script>
 
     <script>
-        // আপনার Firebase কনফিগারেশন
+        // আপনার Firebase কনফিগারেশন (সঠিক স্পেলিং সহ আপডেট করা হয়েছে)
         const firebaseConfig = {
             apiKey: "AIzaSyBt2FnLwwvoO_lLN6HGupigAv9ekxkN9ZA",
             authDomain: "eid-selame-imtiaz-2026.firebaseapp.com",
@@ -402,7 +401,7 @@
         }
 
         function showWheel() {
-            const name = document.getElementById("userName").value;
+            const name = document.getElementById("userName").value.trim();
             if(!name) return alert("দয়া করে আপনার নাম লিখুন!");
             document.getElementById("welcomeMsg").innerText = "ঈদ মোবারক, " + name + "!";
             document.getElementById("entry-screen").style.display = "none";
@@ -425,15 +424,15 @@
                     const index = Math.floor((360 - degrees % 360) / (arc * 180 / Math.PI));
                     const winAmount = amounts[index];
                     
-                    const name = document.getElementById("userName").value;
+                    const name = document.getElementById("userName").value.trim();
                     
-                    // ফায়ারবেস ডাটাবেসে সেভ করা
+                    // Firebase ডাটাবেসে সেভ করা
                     database.ref('users').push({
                         name: name,
                         amount: winAmount,
                         time: new Date().toLocaleString('bn-BD')
                     }).then(() => {
-                        console.log("Data saved to Firebase!");
+                        console.log("Success: Data saved!");
                     }).catch((error) => {
                         console.error("Firebase Error:", error);
                     });
@@ -450,7 +449,7 @@
         }
 
         function showResultBox(win) {
-            const name = document.getElementById("userName").value;
+            const name = document.getElementById("userName").value.trim();
             const box = document.getElementById("result-box");
             const text = document.getElementById("wishText");
             
